@@ -19,12 +19,12 @@
   <div class="row g-4">
     <div class="col-lg-4">
       <div class="card">
-        <img id="imgDetalle" src="" class="card-img-top" alt="Imagen">
+        <img id="imgDetalle" src="./img/021.jpg" class="card-img-top" alt="Imagen">
         <div class="card-body">
-          <h5 class="card-title" id="tituloDetalle">Título</h5>
-          <p class="card-text" id="descCorta">Descripción corta</p>
+          <h5 class="card-title" id="tituloDetalle">Psicologia</h5>
+          <p class="card-text" id="descCorta">La Psicologa Ana luisa Henao Mosquera </p>
 
-          <a href="index.html" class="btn btn-outline-secondary">Volver</a>
+          <a href="index.html" class="btn btn-outline-success">Volver</a>
         </div>
       </div>
     </div>
@@ -130,19 +130,8 @@
         Ejemplo válido: <code>detalle.html?area=psicologia</code>
       </div>
     `;
-  } else {
-    navTitle.textContent = item.navTitle;
-    tituloDetalle.textContent = item.titulo;
-    descCorta.textContent = item.descCorta;
-    imgDetalle.src = item.img;
-    imgDetalle.alt = item.titulo;
-    tituloSeccion.textContent = item.tituloSeccion;
-    contenidoDetalle.innerHTML = item.contenidoHTML;
 
-    if (item.notaExtra) {
-      notaExtra.style.display = "block";
-      notaExtra.textContent = item.notaExtra;
-    }
+  
   }
 </script>
 
