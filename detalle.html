@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Inicio</a>
+    <span class="navbar-text" id="navTitle">Detalle</span>
+  </div>
+</nav>
+
+<div class="container py-4">
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card">
+        <img id="imgDetalle" src="" class="card-img-top" alt="Imagen">
+        <div class="card-body">
+          <h5 class="card-title" id="tituloDetalle">Título</h5>
+          <p class="card-text" id="descCorta">Descripción corta</p>
+
+          <a href="index.html" class="btn btn-outline-secondary">Volver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <h2 class="mb-3" id="tituloSeccion">Información completa</h2>
+
+      <div class="mb-3" id="contenidoDetalle">
+        <!-- Aquí se inserta el contenido -->
+      </div>
+
+      <div class="alert alert-info mt-3" id="notaExtra" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 1) Leer el parámetro ?area=
+  const params = new URLSearchParams(window.location.search);
+  const area = (params.get("area") || "").toLowerCase();
+
+  // 2) Base de datos simple de contenidos (puedes agregar más)
+  const data = {
+    psicologia: {
+      navTitle: "Psicología Familiar",
+      titulo: "Psicología Familiar",
+      descCorta: "Atención, orientación e intervención para familias, cuidadores y redes de apoyo.",
+      img: "./img/05.jpg",
+      tituloSeccion: "Información de Psicología",
+      contenidoHTML: `
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Servicios</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Valoración psicológica familiar</li>
+              <li class="list-group-item">Intervención breve y psicoeducación</li>
+              <li class="list-group-item">Acompañamiento en crisis y orientación</li>
+              <li class="list-group-item">Remisión y articulación con rutas de atención</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">¿Qué incluye?</h5>
+            <p class="card-text">
+              Espacios de escucha, análisis de dinámica familiar, fortalecimiento de habilidades parentales,
+              manejo de emociones, pautas de crianza, resolución de conflictos y redes de apoyo.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Canales / Contacto</h5>
+            <p class="card-text mb-0">
+              Aquí puedes colocar horario, WhatsApp, correo, lugar de atención, etc.
+            </p>
+          </div>
+        </div>
+      `,
+      notaExtra: "Si deseas, puedo ayudarte a redactar la información con enfoque institucional y secciones claras."
+    },
+
+    // Ejemplo de otra área para que veas cómo se agrega:
+    hotel1: {
+      navTitle: "Hotel Damiana",
+      titulo: "Hotel Damiana",
+      descCorta: "Ubicación privilegiada en el centro. Ideal para viajes de negocio.",
+      img: "./img/06.jpg",
+      tituloSeccion: "Información del hotel",
+      contenidoHTML: `
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Dirección:</strong> Calle 00 #00-00</li>
+          <li class="list-group-item"><strong>Servicios:</strong> WiFi, desayuno, parqueadero</li>
+          <li class="list-group-item"><strong>Contacto:</strong> 000 000 0000</li>
+        </ul>
+      `,
+      notaExtra: ""
+    }
+  };
+
+  // 3) Si el area no existe, mostrar mensaje
+  const item = data[area];
+
+  const navTitle = document.getElementById("navTitle");
+  const tituloDetalle = document.getElementById("tituloDetalle");
+  const descCorta = document.getElementById("descCorta");
+  const imgDetalle = document.getElementById("imgDetalle");
+  const tituloSeccion = document.getElementById("tituloSeccion");
+  const contenidoDetalle = document.getElementById("contenidoDetalle");
+  const notaExtra = document.getElementById("notaExtra");
+
+  if (!item) {
+    navTitle.textContent = "No encontrado";
+    tituloDetalle.textContent = "Contenido no encontrado";
+    descCorta.textContent = "No existe información para esta sección. Revisa el enlace.";
+    imgDetalle.src = "./img/05.jpg"; // imagen por defecto si quieres
+    tituloSeccion.textContent = "Detalle";
+    contenidoDetalle.innerHTML = `
+      <div class="alert alert-danger">
+        No se encontró el parámetro <strong>area</strong> o no está registrado.
+        Ejemplo válido: <code>detalle.html?area=psicologia</code>
+      </div>
+    `;
+  } else {
+    navTitle.textContent = item.navTitle;
+    tituloDetalle.textContent = item.titulo;
+    descCorta.textContent = item.descCorta;
+    imgDetalle.src = item.img;
+    imgDetalle.alt = item.titulo;
+    tituloSeccion.textContent = item.tituloSeccion;
+    contenidoDetalle.innerHTML = item.contenidoHTML;
+
+    if (item.notaExtra) {
+      notaExtra.style.display = "block";
+      notaExtra.textContent = item.notaExtra;
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "guia-hoteles",
+  "version": "1.0.0",
+  "description": "nuestro primer proyecto de nodejs",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server . -p 3000",
+    "start": "http-server . -p 3000"
+  },
+  "author": "luis carlos hurtado castañeda",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "jquery": "^4.0.0",
+    "js": "^0.1.0",
+    "popper": "^1.0.1"
+  }
+}
