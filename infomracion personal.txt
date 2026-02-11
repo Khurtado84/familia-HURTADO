@@ -1,0 +1,13 @@
+para subir el servidor
+
+
+npm run dev
+
+
+para actualizar el repositorio
+
+git status
+git add .
+git commit -m "Actualización: se agregan nuevas imágenes a los proyectos"
+git push origin main
+git push origin master

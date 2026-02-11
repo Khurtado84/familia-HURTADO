@@ -1,2 +1,1 @@
-* # creación del proyecto familiar por ING. CARLOS HURTADO
-
+* # creación del proyecto readme por ING. CARLOS HURTADO
