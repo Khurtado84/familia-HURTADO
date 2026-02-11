@@ -1,4 +1,3 @@
-
 /* ===============================
    ESTILOS GENERALES
    =============================== */
@@ -74,19 +73,78 @@ body {
 }
 
 /* ===============================
-   IMÁGENES RESPONSIVE (MISMO TAMAÑO)
+   IMÁGENES RESPONSIVE EN CARDS
+   (MISMO TAMAÑO, SIN DEFORMAR)
    =============================== */
 
 .card-img-top {
   width: 100%;
-  aspect-ratio: 1 / 1;  /* PC y tablet: proporción bonita */
-  object-fit: cover;    /* recorta sin deformar */
+  aspect-ratio: 1 / 1;   /* cuadradas para que todas se vean parejas */
+  object-fit: cover;      /* recorta un poco, pero mantiene estética */
   display: block;
 }
 
-/* En celular: evita que se vuelvan gigantes */
-@media (max-width: 200px) {
+/* En móvil: mantenemos proporción y evitamos “saltos” */
+@media (max-width: 768px) {
   .card-img-top {
-    aspect-ratio: 1 / 1; /* cuadradas en móvil */
+    aspect-ratio: 1 / 1;
   }
+}
+
+/* ===============================
+   CARRUSEL (MISMO ALTO, SIN RECORTAR CONTENIDO)
+   Ideal cuando las imágenes tienen tamaños diferentes
+   =============================== */
+
+/* Centra el carrusel y limita el ancho para look premium */
+.carousel {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Esquinas redondeadas + fondo para “letterbox” */
+.carousel-inner {
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #f3eeee; /* elegante, evita espacios blancos */
+  box-shadow: 0 10px 25px rgba(248, 246, 246, 0.15);
+}
+
+/* Muestra imagen completa (sin recorte) y mantiene mismo alto */
+.carousel-inner img {
+  width: 100%;
+  height: 500px;         /* mismo alto para todas */
+  object-fit: contain;   /* NO recorta, mantiene proporción */
+  display: block;
+}
+
+/* Transición suave (se siente más premium) */
+.carousel-item {
+  transition: transform 0.8s ease-in-out;
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .carousel-inner {
+    border-radius: 16px;
+  }
+
+  .carousel-inner img {
+    height: 320px;       /* más cómodo en celular */
+  }
+}
+
+/* ===============================
+   (OPCIONAL) EFECTO FADE
+   Si en tu HTML agregas: class="carousel slide carousel-fade"
+   =============================== */
+
+.carousel.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  transform: none !important;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+  opacity: 1;
 }
